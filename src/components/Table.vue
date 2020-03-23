@@ -30,11 +30,6 @@
 
 <script>
 export default {
-  // props: {
-  //   heroes: Array,
-  //   columns: Array,
-  //   filterKey: String
-  // },
   data: function () {
     const columns = {
       id: 'ID',
@@ -53,13 +48,13 @@ export default {
       tasks: [
         {
           id: 1,
-          subject: 'タスク1',
+          subject: 'abc',
           category: 1,
           date: '2016-12-01'
         },
         {
           id: 2,
-          subject: 'タスク2',
+          subject: 'def',
           category: 2,
           date: '2020-12-01'
         }
@@ -80,9 +75,9 @@ export default {
   computed: {
     filteredTasks: function () {
       let data = this.tasks
-      let sortKey = this.sortKey
-      var order = this.sortOrders[sortKey] || 1
-      // もし項目をクリックされたら、sortKeyは値が入るので、true
+      const sortKey = this.sortKey
+      let order = this.sortOrders[sortKey] || 1
+      // もし項目をクリックされたら、sortKeyには値が入るので、true
       // sort する処理を行う。
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
@@ -100,8 +95,9 @@ export default {
       }
       // 絞り込み機能
       // searchWord 入力時、小文字に変換
-      var filterWord = this.searchWord && this.searchWord.toLowerCase()
+      const filterWord = this.searchWord && this.searchWord.toLowerCase()
       if (filterWord) {
+        // data.filter(filteringObject) の中で、dataの配列の要素が引数rowとなる。
         const filteringObject = (row) => Object.keys(row).some((key) => {
           if (String(row[key]).toLowerCase().indexOf(filterWord) > -1) {
             return true
