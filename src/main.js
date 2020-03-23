@@ -1,15 +1,13 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import 'babel-polyfill'
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Table from './components/Table.vue'
+// import store from './store'
 
-Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-new Vue({
+const App = new Vue({
   el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+  components: { Table },
+  template: '<sort-table></sort-table>',
+  render: h => h(Table)
 })
+
+App.$mount('#app')
